@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../globals.css";
+import Main from "@/components/Main.astro";
+import H1 from "@/components/ui/H1.astro";
+
+const GYRE_URL = "https://www.gyreteams.com";
+const TEXT_ALCHEMY_URL = "https://www.textalchemy.ai";
+---
+
+<BaseLayout title="Adam D'Costa" viewTransitions={false}>
+  <Main>
+    <H1 text="Adam D'Costa" />
+    <p
+      class="delay-[50] -translate-y-5 transform animate-fade-in-above opacity-0"
+    >
+      I'm a software engineer based in Bristol, UK. I'm currently working at{
+        " "
+      }
+      <a href={GYRE_URL} class="text-muted-foreground">Gyre</a> and{" "}
+      <a href={TEXT_ALCHEMY_URL} class="text-muted-foreground">Text Alchemy</a> as
+      a Full stack developer.
+    </p>
+    <p
+      class="-translate-y-5 transform animate-fade-in-above opacity-0 delay-100"
+    >
+      Something about RetortJS here...
+    </p>
+    <p
+      class="-translate-y-5 transform animate-fade-in-above opacity-0 delay-150"
+    >
+      Other stuff about me here...
+    </p>
+  </Main>
+</BaseLayout>

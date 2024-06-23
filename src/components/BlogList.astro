@@ -1,0 +1,14 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Blog from "./Blog.astro";
+
+interface Props {
+  blogs: CollectionEntry<"blogs">[];
+}
+
+const { blogs } = Astro.props;
+---
+
+<section class="mb-24 grid grid-cols-2 gap-x-16 gap-y-14 max-md:grid-cols-1">
+  {blogs.map((blog) => <Blog blog={blog} />)}
+</section>

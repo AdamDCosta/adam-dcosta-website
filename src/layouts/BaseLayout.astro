@@ -1,0 +1,51 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import BaseHead from "../components/BaseHead.astro";
+import Navbar from "../components/Navbar.tsx";
+import "../globals.css";
+
+interface Props {
+  title: string;
+  viewTransitions: boolean;
+}
+
+const { title, viewTransitions } = Astro.props;
+---
+
+<script is:inline>
+  const setDarkMode = () => {
+    if (typeof window !== "undefined") {
+      const isSystemColorSchemeDark = window.matchMedia(
+        "(prefers-color-scheme: dark)",
+      ).matches;
+      const storageTheme = localStorage.getItem("theme");
+      if (!storageTheme && isSystemColorSchemeDark) {
+        document.documentElement.classList.add("dark");
+      } else if (storageTheme === "dark") {
+        document.documentElement.classList.add("dark");
+      }
+    }
+  };
+
+  setDarkMode();
+
+  document.addEventListener("astro:after-swap", setDarkMode);
+</script>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <BaseHead title={title} />
+    {viewTransitions && <ViewTransitions />}
+  </head>
+  <body>
+    <div class="flex w-full items-center justify-between p-4">
+      <a href="/">AD</a>
+      <Navbar client:visible />
+    </div>
+    <slot />
+  </body>
+</html>

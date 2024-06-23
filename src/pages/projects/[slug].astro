@@ -1,0 +1,45 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Main from "@/components/Main.astro";
+import H1 from "@/components/ui/H1.astro";
+
+export const getStaticPaths = async () => {
+  const projects = await getCollection("projects");
+  const paths = projects.map((project: CollectionEntry<"projects">) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+  return paths;
+};
+
+interface Props {
+  project: CollectionEntry<"projects">;
+}
+
+const { project } = Astro.props;
+const { Content } = await project.render();
+---
+
+<BaseLayout title={project.data.title} viewTransitions>
+  <Main>
+    <H1 text={project.data.title} />
+    <div
+      class="w-124 mb-10 flex h-48 items-center justify-center overflow-hidden rounded"
+      transition:name="project-img"
+      transition:animate="initial"
+    >
+      <img
+        src={project.data.image}
+        alt={project.data.title}
+        class="w-full rounded object-cover object-center"
+      />
+    </div>
+    <div
+      class="prose prose-xl prose-slate relative mb-20 overflow-visible dark:prose-invert"
+    >
+      <Content />
+    </div>
+  </Main>
+</BaseLayout>

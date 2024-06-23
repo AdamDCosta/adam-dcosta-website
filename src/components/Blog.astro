@@ -1,0 +1,32 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  blog: CollectionEntry<"blogs">;
+}
+
+const { blog } = Astro.props;
+---
+
+<article>
+  <a href={`/blogs/${blog.slug}`}>
+    <h2>{blog.data.title}</h2>
+  </a>
+  <a href={`/blogs/${blog.slug}`}>
+    <div
+      class="flex h-24 w-48 items-center justify-center overflow-hidden rounded"
+      transition:name="blog-img"
+      transition:animate="initial"
+    >
+      <img
+        src={blog.data.image}
+        alt={blog.data.title}
+        class="h-full w-full rounded object-cover object-center"
+      />
+    </div>
+  </a>
+  <p>{blog.data.date}</p>
+  <p class="line-clamp-2 text-2xl">
+    {blog.body}
+  </p>
+</article>
