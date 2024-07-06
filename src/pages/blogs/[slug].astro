@@ -27,7 +27,7 @@ const { Content } = await blog.render();
     <H1 text={blog.data.title} />
     <div
       class="w-124 mb-10 flex h-48 items-center justify-center overflow-hidden rounded"
-      transition:name="blog-img"
+      transition:name={blog.slug}
       transition:animate="initial"
     >
       <img

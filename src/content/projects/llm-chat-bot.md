@@ -2,7 +2,7 @@
 title: "✨ LLM Chat Bot"
 slug: "llm-chat-bot"
 url: "https://github.com/AdamDCosta/chat-streaming-example"
-image: "/images/node-streaming.webp"
+image: "/images/chat-streaming-example.png"
 stack: ["Nuxt", "Typescript", "OpenAI", "Tailwind"]
 ---
 

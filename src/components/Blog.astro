@@ -15,7 +15,7 @@ const { blog } = Astro.props;
   <a href={`/blogs/${blog.slug}`}>
     <div
       class="flex h-24 w-48 items-center justify-center overflow-hidden rounded"
-      transition:name="blog-img"
+      transition:name={blog.slug}
       transition:animate="initial"
     >
       <img

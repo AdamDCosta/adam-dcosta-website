@@ -24,10 +24,9 @@ const { Content } = await project.render();
 
 <BaseLayout title={project.data.title} viewTransitions>
   <Main>
-    <H1 text={project.data.title} />
     <div
-      class="w-124 mb-10 flex h-48 items-center justify-center overflow-hidden rounded"
-      transition:name="project-img"
+      class="w-124 mb-10 flex items-center justify-center overflow-hidden rounded"
+      transition:name={project.slug}
       transition:animate="initial"
     >
       <img
@@ -36,6 +35,7 @@ const { Content } = await project.render();
         class="w-full rounded object-cover object-center"
       />
     </div>
+    <H1 text={project.data.title} />
     <div
       class="prose prose-xl prose-slate relative mb-20 overflow-visible dark:prose-invert"
     >
